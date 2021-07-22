@@ -1,16 +1,202 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	font-family: 'Bree Serif', serif;
+	font-weight: 100;
+}
+
+.max-width {
+	width: 700px;
+	max-width: 100%;
+}
+
+.center-h {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.center-v {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+p {
+	font-family: 'Alegreya Sans';
+	font-size: 1.1rem;
+	margin: 0;
+}
+
+.margin-0 {
+	margin: 0;
+}
+
+.round {
+	border-radius: 50%;
+}
+
+.flex-vertical {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-horizontal {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-end {
+	display: flex;
+	align-items: flex-end;
+}
+
+.background {
+	background-color: #f0f0f0;
+}
+
+.clean-background {
+	background-color: white;
+}
+
+.space-between {
+	display: flex;
+	justify-content: space-between;
+}
+
+.row-margin-auto {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+.paper-like {
+	/* border: 1px solid rgba(194, 194, 194, 0.363); */
+	box-shadow: 0px 4px 5px #00000028;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background-color: white;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	padding: 20px 20px;
+}
+
+@media (max-width: 411px) {
+	.paper-like {
+		padding-left: 6px;
+		padding-right: 6px;
+	}
+}
+
+.z-index-10 {
+	z-index: 10;
+	position: relative;
+}
+
+:root {
+	--yellow: #fc0;
+}
+
+.buttons-wrapper {
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 20px;
+	padding-right: 20px;
+}
+
+textarea {
+	resize: none;
+}
+
+.flex-row-reverse {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.justify-end {
+	display: flex;
+	justify-content: end;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.center-b {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+#google-button {
+	background-color: red;
+}
+
+.round-button {
+	border-radius: 1000px;
+}
+
+.cover-screen {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+}
+
+.flex-wrap {
+	flex-wrap: wrap;
+}
+
+body,
+html {
+	margin: 0;
+}
+
+body {
+	background-color: #f0f0f0;
 }

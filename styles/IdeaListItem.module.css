@@ -1,0 +1,38 @@
+.idea_list_item {
+	padding: 10px 20px;
+	background-color: white;
+	box-sizing: content-box;
+	cursor: pointer;
+}
+
+.idea_list_item:hover {
+	background-color: #f7f7f7;
+}
+
+.idea_list_item:active {
+	background-color: #f6f6f6;
+}
+
+.hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 0 auto;
+	padding: 0;
+	width: calc(100% - 30px);
+}
+
+.title {
+	margin: 0;
+	font-size: 1.2rem;
+	text-decoration: none;
+	color: #0036aa;
+	font-family: 'Alegreya Sans';
+}
+
+.description {
+	/* font-size: 0.9rem; */
+	font-family: 'Assistant', sans-serif;
+	color: rgba(0, 0, 0, 0.651);
+}

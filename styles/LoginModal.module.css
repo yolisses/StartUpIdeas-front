@@ -1,0 +1,9 @@
+.modal h1 {
+	font-size: 1.4rem;
+	font-family: 'Source Sans Pro', sans-serif;
+	margin-bottom: 20px;
+}
+
+.modal button {
+	width: 100%;
+}

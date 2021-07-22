@@ -1,0 +1,37 @@
+button {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	cursor: pointer;
+	font-family: 'Noto Sans JP', sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	border: 0 none #0000;
+	border-radius: 6px;
+	padding: 5px 10px;
+}
+
+button:active {
+	transform: scale(0.96);
+}
+
+.btn-strong {
+	color: rgb(255, 255, 255);
+	background-color: rgb(17, 0, 255);
+}
+
+.little-login-button {
+	padding: 0 20px;
+	height: 40px;
+	border-radius: 10px;
+	border: 2px solid rgba(255, 255, 255, 0.301);
+	color: white;
+	background-color: #0000;
+	font-size: 0.9rem;
+}
+
+.little-login-button:hover {
+	border: 2px solid rgba(255, 255, 255, 0.76);
+	color: white;
+	background-color: #0000;
+}
