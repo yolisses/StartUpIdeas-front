@@ -13,7 +13,7 @@ export default function TopButtonWrapper() {
             <div className={style.wrapper}>
                 <NewIdeaButton />
             </div> :
-            <></>
+            <div></div> //Very strange behaviour when use <></>
         }
     </>
 }

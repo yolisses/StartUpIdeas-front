@@ -20,6 +20,8 @@ export function CommentEntry(props) {
     const [text, setText] = useState('')
 
     const sendComment = () => {
+        console.log(retrieveToken)
+        console.log(retrieveToken())
         api.post(`/idea/${props.id}/comments`, { text },
             {
                 headers:

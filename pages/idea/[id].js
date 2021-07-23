@@ -8,9 +8,10 @@ import { CommentEntry } from '../../components/CommentEntry';
 import DefaultPageLayout from '../../components/DefaultPageLayout';
 
 export async function getStaticProps(context) {
-	const idea = await api.get('/idea/' + context.params.id);
-	const comments = await api.get(`/idea/${context.params.id}/comments`);
-
+	const [idea, comments] = await Promise.all([
+		api.get('/idea/' + context.params.id),
+		api.get(`/idea/${context.params.id}/comments`),
+	]);
 	return {
 		props: { idea: idea.data, comments: comments.data },
 	};
@@ -37,7 +38,7 @@ export default function IdeaPage(props) {
 					{/* <VoteBox id={id} /> */}
 				</div>
 				<div className='paper-like'>
-					<CommentEntry id={props.idea.id} addCallback={() => {}} />
+					<CommentEntry id={idea.id} addCallback={() => {}} />
 					{comments.map((item) => {
 						return <Comment key={item.id} {...item}></Comment>;
 					})}
@@ -53,13 +54,13 @@ export default function IdeaPage(props) {
 							the first?
 						</div>
 					) : (
-						<div />
+						<div></div>
 					)}
 				</div>
 			</div>
-			<div style={{ marginTop: '30px', paddingBottom: '4px' }}>
+			{/* <div style={{ marginTop: '30px', paddingBottom: '4px' }}>
 				<h3>May interest you</h3>
-			</div>
+			</div> */}
 			{/* <IdeasLoader /> */}
 		</DefaultPageLayout>
 	);

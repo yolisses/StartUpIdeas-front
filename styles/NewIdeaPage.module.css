@@ -1,0 +1,46 @@
+.message {
+	font-size: 1.1rem;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 400;
+	padding-left: 20px;
+}
+
+.form {
+	margin: auto 0;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.form button {
+	padding: 5px 10px;
+	box-shadow: 0 2.5px 5px #0005;
+}
+
+.form .text-input {
+	/* margin-bottom: 20px; */
+	text-align: justify;
+	text-justify: inter-word;
+	border: 1px solid rgb(194, 194, 194);
+	border-top-left-radius: 0;
+}
+
+.form .little-instruction {
+	padding-top: 4px;
+	padding-bottom: 20px;
+	font-size: 0.9rem;
+}
+
+.form label {
+	font-size: 1.1rem;
+	font-family: 'Source Sans Pro', sans-serif;
+	margin-bottom: 2px;
+}
+
+.buttons-wrapper {
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 20px;
+	padding-right: 20px;
+}

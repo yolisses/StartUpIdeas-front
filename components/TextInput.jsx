@@ -1,4 +1,4 @@
-import "/styles/TextInput.module.css"
+import style from "/styles/TextInput.module.css"
 
 export function TextInput(props) {
 
@@ -26,7 +26,7 @@ export function TextInput(props) {
         }
     }
 
-    return <div className="text-input">
+    return <div className={style.text_input}>
         <textarea
             value={value}
             onChange={onChange}
