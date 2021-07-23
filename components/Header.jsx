@@ -39,14 +39,14 @@ export default function Header() {
                 {/* <SearchBox></SearchBox> */}
                 <div className="center-v justify-end full-width">
                     {!isAuthenticated() && <>
-                        <button className="little-login-button"
+                        <button className={style.login_button}
                             onClick={() => {
                                 modal.showModal(
                                     <LoginModal></LoginModal>
                                 );
                             }}
                         >Login</button>
-                        <button className="little-login-button"
+                        <button className={style.login_button}
                             onClick={() => {
                                 modal.showModal(
                                     <LoginModal signIn={true}></LoginModal>

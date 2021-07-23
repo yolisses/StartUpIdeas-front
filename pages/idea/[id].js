@@ -7,16 +7,6 @@ import { Comment } from '../../components/Comment';
 import { CommentEntry } from '../../components/CommentEntry';
 import DefaultPageLayout from '../../components/DefaultPageLayout';
 
-export async function getStaticProps(context) {
-	const [idea, comments] = await Promise.all([
-		api.get('/idea/' + context.params.id),
-		api.get(`/idea/${context.params.id}/comments`),
-	]);
-	return {
-		props: { idea: idea.data, comments: comments.data },
-	};
-}
-
 export default function IdeaPage(props) {
 	const { idea, comments } = props;
 	return (
@@ -64,6 +54,17 @@ export default function IdeaPage(props) {
 			{/* <IdeasLoader /> */}
 		</DefaultPageLayout>
 	);
+}
+
+export async function getStaticProps(context) {
+	const [idea, comments] = await Promise.all([
+		api.get('/idea/' + context.params.id),
+		api.get(`/idea/${context.params.id}/comments`),
+	]);
+	return {
+		props: { idea: idea.data, comments: comments.data },
+		revalidate: 1,
+	};
 }
 
 export async function getStaticPaths() {
