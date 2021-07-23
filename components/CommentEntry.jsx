@@ -41,7 +41,7 @@ export function CommentEntry(props) {
     return <div className={style.entry}>
         {/* <img src="https://github.com/yowlisses.png" alt="Yowlisses" className="round" /> */}
         {isAuthenticated() ?
-            <>
+            <div>
                 <TextInput
                     value={text}
                     placeholder="Give some comment"
@@ -50,7 +50,7 @@ export function CommentEntry(props) {
                     onEnterPress={onEnterPress}
                 />
                 <div className="little-instruction">Press enter to publish</div>
-            </>
+            </div>
             :
             <div className={style.login_button}>
                 <button

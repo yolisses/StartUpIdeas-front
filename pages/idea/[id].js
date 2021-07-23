@@ -67,9 +67,16 @@ export default function IdeaPage(props) {
 }
 
 export async function getStaticPaths() {
-	return {
-		//which routes will be pre rendered
-		paths: [{ params: { id: '1' } }],
-		fallback: true,
-	};
+	// Call an external API endpoint to get posts
+	const res = await api.get('/ideas_ids');
+	const ids = await res.data;
+
+	// Get the paths we want to pre-render based on posts
+	const paths = ids.map((id) => ({
+		params: { id: '' + id.id },
+	}));
+
+	// We'll pre-render only these paths at build time.
+	// { fallback: false } means other routes should 404.
+	return { paths, fallback: false };
 }
