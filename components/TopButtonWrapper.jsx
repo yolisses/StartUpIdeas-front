@@ -4,7 +4,7 @@ import { NewIdeaButton } from "./NewIdeaButton"
 
 import style from '../styles/TopButtonWrapper.module.css'
 
-export function TopButtonWrapper() {
+export default function TopButtonWrapper() {
 
     useForceUpdate()
 

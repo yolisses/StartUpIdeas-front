@@ -1,0 +1,26 @@
+.text-input {
+	border: 1px solid rgb(194, 194, 194);
+	border-radius: 8px;
+}
+
+.text-input textarea {
+	overflow: hidden;
+}
+
+.text-input textarea {
+	border: none;
+	border-radius: 8px;
+	padding: 5px;
+	text-align: justify;
+	font-size: 1rem;
+	font-family: 'Alegreya Sans';
+	font-size: 1.2rem;
+	margin: 0;
+	width: 100%;
+}
+
+.little-instruction {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-size: 0.8rem;
+	opacity: 0.7;
+}

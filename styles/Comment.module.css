@@ -1,0 +1,49 @@
+.comment {
+	padding: 4px 6px;
+	width: calc(100% - var(--level) * 35px);
+	border-color: #e0e0e0;
+	border-width: 1px;
+	border-bottom-style: solid;
+	margin-left: calc(var(--level) * 35px);
+	font-size: 0.9rem;
+	background-color: white;
+}
+
+.comment p {
+	padding: 0.3rem 0.2rem;
+	padding-bottom: 0.3rem;
+}
+
+.junction {
+	border-left-style: solid;
+	border-bottom-left-radius: 16px;
+}
+
+.comment .user-image {
+	width: 30px;
+	height: 30px;
+	margin-right: 4px;
+	margin-top: 6px;
+}
+
+.user_name {
+	color: gray;
+	font-size: 1rem;
+	font-family: 'Alegreya Sans';
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.comment-user-div {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}

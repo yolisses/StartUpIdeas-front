@@ -133,6 +133,10 @@ a {
 	--yellow: #fc0;
 }
 
+:root {
+	--header-size: 50px;
+}
+
 .buttons-wrapper {
 	display: flex;
 	flex-direction: row-reverse;
