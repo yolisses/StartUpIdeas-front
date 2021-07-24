@@ -19,19 +19,15 @@ export function LoginModal(props) {
 
     const modal = useContext(ModalContext);
     const { forceUpdate } = useForceUpdate();
-    console.log({ forceUpdate })
 
     const responseGoogle = (res) => {
-        console.log('google', res.tokenId);
         api.post('/login', { token: res.tokenId })
             .then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     storeUserData(res.data)
                     modal.closeModal()
                     forceUpdate()
                     if (props.redirect) {
-                        console.log('redireciona para ' + props.redirect)
                         router.push(props.redirect)
                     }
                 }

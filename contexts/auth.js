@@ -23,8 +23,6 @@ export const storeUserData = ({ token, id, name }) => {
 	localStorage.setItem('id', id);
 	localStorage.setItem('name', name);
 	localStorage.setItem('token', token);
-	console.log('guardado: ', localStorage.getItem('token'));
-	console.log('guardado: ', localStorage.getItem('id'));
 };
 
 export const deleteToken = () => {

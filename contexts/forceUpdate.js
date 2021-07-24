@@ -7,7 +7,6 @@ export function ForceUpdateProvider(props) {
 
 	function forceUpdate() {
 		setValue(value + 1);
-		console.log('force update');
 	}
 
 	return (

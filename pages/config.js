@@ -15,10 +15,8 @@ export default function ConfigPage() {
 
 	useEffect(() => {
 		const route = '/user/' + retrieveId();
-		console.log({ route });
 		api.get('/user/' + retrieveId()).then((res) => {
 			setUser(res.data);
-			console.log(res.data);
 		});
 	}, [changingName]);
 
@@ -32,7 +30,6 @@ export default function ConfigPage() {
 				}
 			)
 			.then((res) => {
-				console.log(res);
 				setChangingName(false);
 			});
 	};

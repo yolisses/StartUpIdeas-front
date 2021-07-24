@@ -9,7 +9,6 @@ import Image from 'next/image';
 let func = () => { }
 function hardCore() {
     func()
-    console.log('foi')
 }
 
 export default function UserMenu(props) {
@@ -23,7 +22,6 @@ export default function UserMenu(props) {
     useEffect(() => {
         if (open) {
             document.addEventListener('click', hardCore)
-            console.log(window.screen.width)
             if (window.screen.width <= 411)
                 document.querySelector('body').style.overflowY = "hidden"
         } else {

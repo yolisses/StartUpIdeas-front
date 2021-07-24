@@ -15,13 +15,10 @@ export function VoteBox(props) {
         const route = isAuthenticated() ? `/idea/${props.id}/user/${retrieveId()}/vote` : `/idea/${props.id}/vote`
         api.get(route)
             .then((res) => {
-                console.log(res.data)
                 const { count, vote } = res.data
                 if (vote && vote.is_up !== voteValue) {
                     setVoteValue(vote && vote.is_up)
                 }
-                console.log(count)
-                console.log('lugar 1')
                 setCount(count)
             })
     }
@@ -38,12 +35,10 @@ export function VoteBox(props) {
 
     const sendVote = async (isUp) => {
         if (!isAuthenticated()) {
-            console.log('Não está autenticado')
             return
         }
         if (voteValue === undefined || voteValue !== isUp) {
             setVoteValue(isUp)
-            console.log('set')
             api.post(`/idea/${props.id}/vote`,
                 { is_up: isUp },
                 {
@@ -57,7 +52,6 @@ export function VoteBox(props) {
         }
         else {
             setVoteValue(undefined)
-            console.log('delete')
             api.delete(`/idea/${props.id}/vote`, {
                 headers:
                     { authorization: retrieveToken() },
@@ -75,8 +69,6 @@ export function VoteBox(props) {
     if (voteValue !== undefined && isAuthenticated()) {
         className = className + conversion[voteValue]
     }
-
-    console.log({ voteValue })
 
     const size = 20
 
