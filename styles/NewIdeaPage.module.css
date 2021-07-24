@@ -18,8 +18,8 @@
 	box-shadow: 0 2.5px 5px #0005;
 }
 
-.form .text-input {
-	/* margin-bottom: 20px; */
+.form .text_input {
+	margin-bottom: 20px;
 	text-align: justify;
 	text-justify: inter-word;
 	border: 1px solid rgb(194, 194, 194);

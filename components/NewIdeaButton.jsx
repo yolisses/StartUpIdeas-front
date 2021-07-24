@@ -19,7 +19,7 @@ export function NewIdeaButton() {
             </button>
         </Link>
     } else {
-        return <button className="btn-strong"
+        return <button className={style.button}
             onClick={() => {
                 modal.showModal(
                     <LoginModal redirect="/new_idea" />

@@ -4,15 +4,11 @@ import style from "/styles/Header.module.css";
 
 import Image from 'next/image';
 
-// import { ModalContext } from "../components/ModalContext"
 import { useContext } from 'react';
 
 import { LoginModal } from './LoginModal';
 
 import Link from 'next/link'
-
-
-// import { UserMenu } from './UserMenu';
 
 import { NewIdeaButton } from './NewIdeaButton';
 import { useForceUpdate } from '../contexts/forceUpdate';

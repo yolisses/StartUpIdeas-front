@@ -41,6 +41,7 @@ export default function NewIdeaPage(props) {
 						<TextInput
 							id='title-input'
 							value={title}
+							className={style.text_input}
 							// placeholder="e.g. a app to write a book based on mindmapping (snowflake technique)"
 							onChange={(e) => setTitle(e.target.value)}
 							singleLine={true}
@@ -53,6 +54,7 @@ export default function NewIdeaPage(props) {
 							id='description-input'
 							additionalRows={1}
 							value={description}
+							className={style.text_input}
 							onChange={(e) => setDescription(e.target.value)}
 						/>
 						{/* <div className='little-instruction'>

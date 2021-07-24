@@ -26,7 +26,7 @@ export function TextInput(props) {
         }
     }
 
-    return <div className={style.text_input}>
+    return <div className={`${style.text_input} ${props.className || ''}`}>
         <textarea
             value={value}
             onChange={onChange}
