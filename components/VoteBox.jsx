@@ -73,7 +73,7 @@ export function VoteBox(props) {
     const size = 20
 
     return <div
-        className={`${style.box} ${conversion[voteValue]}`}
+        className={`${style.box} ${style[conversion[voteValue]]}`}
     >
         <Image
             width={size}
@@ -81,7 +81,7 @@ export function VoteBox(props) {
             src="/images/vote.svg"
             alt=""
             onClick={() => sendVote(true)}
-            className={style.button}
+            className={`${style.button} ${style.vote_button_up}`}
         />
         <span>{count}</span>
         <Image
@@ -90,7 +90,7 @@ export function VoteBox(props) {
             src="/images/downvote.svg"
             alt=""
             onClick={() => sendVote(false)}
-            className={style.button}
+            className={`${style.button} ${style.vote_button_down}`}
         />
     </div>
 }

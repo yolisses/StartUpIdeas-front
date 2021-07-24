@@ -2,7 +2,7 @@ import { InfiniteScroll } from "../components/InfiniteScroll";
 import { IdeaListItem } from "../components/IdeaListItem";
 import { api } from "../services/api";
 
-export function IdeasLoader(props) {
+export default function IdeasLoader(props) {
     const fetchData = (addItems, page) => {
         api.get('/idea/page/' + page)
             .then((res) => {

@@ -12,6 +12,8 @@ import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import { VoteBox } from '../../components/VoteBox';
 
+import IdeasLoader from '../../components/IdeasLoader';
+
 export default function IdeaPage(props) {
 	const [idea, setIdea] = useState(props.idea || {});
 
@@ -68,10 +70,10 @@ export default function IdeaPage(props) {
 					)}
 				</div>
 			</div>
-			{/* <div style={{ marginTop: '30px', paddingBottom: '4px' }}>
+			<div style={{ marginTop: '30px', paddingBottom: '4px' }}>
 				<h3>May interest you</h3>
-			</div> */}
-			{/* <IdeasLoader /> */}
+			</div>
+			<IdeasLoader />
 		</DefaultPageLayout>
 	);
 }

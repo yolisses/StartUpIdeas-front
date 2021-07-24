@@ -1,5 +1,5 @@
 .box {
-	margin: 4px 0;
+	margin-top: 10px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -15,9 +15,12 @@
 	color: #f39400;
 }
 
+.up {
+}
+
 /* .vote-button-up, */
-.box.up .vote-button-up,
-.box.down .vote-button-down {
+.box.up .vote_button_up,
+.box.down .vote_button_down {
 	filter: brightness(1) sepia(1) saturate(5);
 }
 
