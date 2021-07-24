@@ -2,32 +2,19 @@
 	margin-bottom: 20px;
 }
 
-/* .entry img {
-	width: 32px;
-	height: 32px;
-	box-sizing: content-box;
-	margin-right: 4px;
-	margin-top: 2px;
-	background-color: rgb(180, 180, 180);
-} */
-
 .fake_input {
 	font-family: 'Alegreya Sans';
 	font-size: 1.2rem;
-}
-
-.login_button {
-	border: 1px solid #c2c2c2;
-	border-radius: 8px;
-	color: gray;
-	padding: 5px;
-	text-align: justify;
-	font-size: 1rem;
-	font-family: 'Alegreya Sans';
-	font-size: 1.2rem;
-	width: 100%;
-
 	display: flex;
 	flex-direction: row;
 	align-items: baseline;
+	border: 1px solid #c2c2c2;
+	border-radius: 8px;
+	padding: 6px;
+
+	color: gray;
+}
+
+.fake_input button {
+	margin-right: 2px;
 }

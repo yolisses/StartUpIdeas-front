@@ -6,10 +6,11 @@ import TopButtonWrapper from '../../components/TopButtonWrapper';
 import { Comment } from '../../components/Comment';
 import { CommentEntry } from '../../components/CommentEntry';
 import DefaultPageLayout from '../../components/DefaultPageLayout';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
 import Head from 'next/head';
+import { VoteBox } from '../../components/VoteBox';
 
 export default function IdeaPage(props) {
 	const [idea, setIdea] = useState(props.idea || {});
@@ -19,14 +20,14 @@ export default function IdeaPage(props) {
 
 	let [comments, setComments] = useState([]);
 
-	async function refresh() {
+	const refresh = useCallback(() => {
 		api.get(`/idea/${id}/comments`).then((res) => setComments(res.data));
 		if (!idea) {
 			api.get('/ideas_ids').then((res) => setIdea(res.data));
 		}
-	}
+	}, [id, idea]);
 
-	useEffect(refresh);
+	useEffect(() => refresh(), [id, idea, refresh]);
 
 	function addCallback(res) {
 		refresh();
@@ -41,17 +42,10 @@ export default function IdeaPage(props) {
 			<div>
 				<div className='paper-like' id={style.idea}>
 					<div>
-						{/* <Image
-								src='/images/idea.svg'
-								alt='light bulb'
-								width={30}
-								height={30}
-								style={{ display: 'inline' }}
-							/> */}
 						<h1>{(idea && idea.title) || 'loading...'}</h1>
 						<p>{(idea && idea.description) || 'loading...'}</p>
 					</div>
-					{/* <VoteBox id={id} /> */}
+					<VoteBox id={id} />
 				</div>
 				<div className='paper-like'>
 					<CommentEntry id={idea && idea.id} addCallback={addCallback} />

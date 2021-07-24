@@ -60,7 +60,7 @@ export function CommentEntry(props) {
                 <div className="little-instruction">Press enter to publish</div>
             </div>
             :
-            <div className={style.login_button}>
+            <div className={style.fake_input}>
                 <button
                     onClick={() => {
                         modal.showModal(
