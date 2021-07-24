@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
 export default function IdeaPage(props) {
-	const { idea } = props;
+	const [idea, setIdea] = useState(props.idea || {});
 
 	const router = useRouter();
 	const { id } = router.query;
@@ -23,6 +23,10 @@ export default function IdeaPage(props) {
 
 	useEffect(() => {
 		refresh();
+		if (!idea) {
+			const res = await api.get('/ideas_ids');
+			setIdea(res.data);
+		}
 	});
 
 	function addCallback(res) {
@@ -50,7 +54,7 @@ export default function IdeaPage(props) {
 					{/* <VoteBox id={id} /> */}
 				</div>
 				<div className='paper-like'>
-					<CommentEntry id={idea.id} addCallback={addCallback} />
+					<CommentEntry id={idea && idea.id} addCallback={addCallback} />
 					{comments.map((item) => {
 						return <Comment key={item.id} {...item}></Comment>;
 					})}
