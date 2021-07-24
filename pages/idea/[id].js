@@ -9,6 +9,8 @@ import DefaultPageLayout from '../../components/DefaultPageLayout';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
+import Head from 'next/head';
+
 export default function IdeaPage(props) {
 	const [idea, setIdea] = useState(props.idea || {});
 
@@ -32,6 +34,9 @@ export default function IdeaPage(props) {
 
 	return (
 		<DefaultPageLayout>
+			<Head>
+				<title>{(idea && idea.title) || 'StartUpIdeas'}</title>
+			</Head>
 			<TopButtonWrapper />
 			<div>
 				<div className='paper-like' id={style.idea}>
