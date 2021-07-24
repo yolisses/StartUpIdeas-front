@@ -22,7 +22,7 @@ export function NewIdeaButton() {
         return <button className="btn-strong"
             onClick={() => {
                 modal.showModal(
-                    <LoginModal redirect="/new_idea" history={history} />
+                    <LoginModal redirect="/new_idea" />
                 );
             }}>
             <span className="material-icons">add</span>

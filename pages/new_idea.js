@@ -8,9 +8,13 @@ import style from '/styles/NewIdeaPage.module.css';
 
 import DefaultPageLayout from '../components/DefaultPageLayout';
 
+import { useRouter } from 'next/router';
+
 export default function NewIdeaPage(props) {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
+
+	const router = useRouter();
 
 	const sendIdea = () => {
 		api
@@ -21,7 +25,7 @@ export default function NewIdeaPage(props) {
 			)
 			.then((res) => {
 				if (props.addCallback) props.addCallback(res);
-				props.history.push('/');
+				router.push('/');
 			});
 	};
 

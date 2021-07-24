@@ -9,8 +9,13 @@ import { ModalContext } from "../contexts/ModalContext";
 import { useContext } from "react";
 import { useForceUpdate } from "../contexts/forceUpdate";
 
+
+import { useRouter } from 'next/router'
+
 export function LoginModal(props) {
     const word = props.signIn ? "Sign in" : "Login"
+
+    const router = useRouter()
 
     const modal = useContext(ModalContext);
     const { forceUpdate } = useForceUpdate();
@@ -27,7 +32,7 @@ export function LoginModal(props) {
                     forceUpdate()
                     if (props.redirect) {
                         console.log('redireciona para ' + props.redirect)
-                        // props.history.push(props.redirect)
+                        router.push(props.redirect)
                     }
                 }
             })
