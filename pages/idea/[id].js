@@ -17,21 +17,16 @@ export default function IdeaPage(props) {
 
 	let [comments, setComments] = useState([]);
 
-	function refresh() {
+	async function refresh() {
 		api.get(`/idea/${id}/comments`).then((res) => setComments(res.data));
+		if (!idea) {
+			api.get('/ideas_ids').then((res) => setIdea(res.data));
+		}
 	}
 
-	useEffect(() => {
-		refresh();
-		if (!idea) {
-			const res = await api.get('/ideas_ids');
-			setIdea(res.data);
-		}
-	});
+	useEffect(refresh);
 
 	function addCallback(res) {
-		console.log(res);
-		console.log(comments);
 		refresh();
 	}
 
