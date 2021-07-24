@@ -16,10 +16,12 @@ import Link from 'next/link'
 
 import { NewIdeaButton } from './NewIdeaButton';
 import { useForceUpdate } from '../contexts/forceUpdate';
+import UserMenu from './UserMenu';
+import { ModalContext } from '../contexts/ModalContext';
 
 export default function Header() {
 
-    // const modal = useContext(ModalContext);
+    const modal = useContext(ModalContext);
     useForceUpdate()
 
     return (
@@ -37,7 +39,7 @@ export default function Header() {
                     </div>
                 </Link>
                 {/* <SearchBox></SearchBox> */}
-                <div className="center-v justify-end full-width">
+                <div className={style.end_wrapper}>
                     {!isAuthenticated() && <>
                         <button className={style.login_button}
                             onClick={() => {
@@ -60,9 +62,7 @@ export default function Header() {
                                 window.location.pathname !== '/new_idea' &&
                                 <NewIdeaButton />
                             }
-                            <div className="flex-v">
-                                {/* <UserMenu /> */}
-                            </div>
+                            <UserMenu />
                         </>
                     }
                 </div>

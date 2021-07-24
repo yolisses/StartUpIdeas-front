@@ -27,5 +27,6 @@ export const storeUserData = ({ token, id, name }) => {
 	console.log('guardado: ', localStorage.getItem('id'));
 };
 
-export const deleteToken = () => {};
-//  localStorage.removeItem('token');
+export const deleteToken = () => {
+	localStorage.removeItem('token');
+};

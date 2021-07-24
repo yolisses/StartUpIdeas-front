@@ -1,4 +1,4 @@
-button {
+.button {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -9,13 +9,11 @@ button {
 	border: 0 none #0000;
 	border-radius: 6px;
 	padding: 5px 10px;
-}
 
-button:active {
-	transform: scale(0.96);
-}
-
-.btn-strong {
 	color: rgb(255, 255, 255);
 	background-color: rgb(17, 0, 255);
+}
+
+.button:active {
+	transform: scale(0.96);
 }

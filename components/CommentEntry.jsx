@@ -36,6 +36,8 @@ export function CommentEntry(props) {
         sendComment()
         setText('')
         e.target.blur()
+        if (props.sendCallback)
+            props.sendCallback(text)
     }
 
     return <div className={style.entry}>

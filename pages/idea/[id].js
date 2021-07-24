@@ -6,9 +6,31 @@ import TopButtonWrapper from '../../components/TopButtonWrapper';
 import { Comment } from '../../components/Comment';
 import { CommentEntry } from '../../components/CommentEntry';
 import DefaultPageLayout from '../../components/DefaultPageLayout';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/dist/client/router';
 
 export default function IdeaPage(props) {
-	const { idea, comments } = props;
+	const { idea } = props;
+
+	const router = useRouter();
+	const { id } = router.query;
+
+	let [comments, setComments] = useState([]);
+
+	function refresh() {
+		api.get(`/idea/${id}/comments`).then((res) => setComments(res.data));
+	}
+
+	useEffect(() => {
+		refresh();
+	}, [props]);
+
+	function addCallback(res) {
+		console.log(res);
+		console.log(comments);
+		refresh();
+	}
+
 	return (
 		<DefaultPageLayout>
 			<TopButtonWrapper />
@@ -28,7 +50,7 @@ export default function IdeaPage(props) {
 					{/* <VoteBox id={id} /> */}
 				</div>
 				<div className='paper-like'>
-					<CommentEntry id={idea.id} addCallback={() => {}} />
+					<CommentEntry id={idea.id} addCallback={addCallback} />
 					{comments.map((item) => {
 						return <Comment key={item.id} {...item}></Comment>;
 					})}
@@ -57,12 +79,9 @@ export default function IdeaPage(props) {
 }
 
 export async function getStaticProps(context) {
-	const [idea, comments] = await Promise.all([
-		api.get('/idea/' + context.params.id),
-		api.get(`/idea/${context.params.id}/comments`),
-	]);
+	const [idea] = await Promise.all([api.get('/idea/' + context.params.id)]);
 	return {
-		props: { idea: idea.data, comments: comments.data },
+		props: { idea: idea.data },
 		revalidate: 1,
 	};
 }

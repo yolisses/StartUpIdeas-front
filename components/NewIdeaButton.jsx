@@ -3,6 +3,8 @@ import { isAuthenticated } from "../contexts/auth";
 import { ModalContext } from "../contexts/ModalContext";
 import { LoginModal } from "./LoginModal";
 
+import style from '/styles/NewIdeaButton.module.css'
+
 import Link from "next/link";
 
 export function NewIdeaButton() {
@@ -11,7 +13,7 @@ export function NewIdeaButton() {
 
     if (isAuthenticated()) {
         return <Link href="/new_idea">
-            <button className="btn-strong">
+            <button className={style.button}>
                 <span className="material-icons">add</span>
                 <span>Add new idea</span>
             </button>

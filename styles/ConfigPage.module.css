@@ -1,0 +1,30 @@
+.username_config {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 30px;
+}
+
+.change_name_wrapper {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.button_spacer {
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+	padding-bottom: 0;
+	gap: 10px;
+}
+
+.change_name_wrapper h2 {
+	font-size: 1.5rem;
+}
+
+.change_name_wrapper input {
+	font-size: 1.1rem;
+	width: 100%;
+	flex-grow: 1;
+}

@@ -1,0 +1,73 @@
+#menu {
+	position: absolute;
+	right: 0;
+	margin-right: 10px;
+	width: 100%;
+	max-width: 200px;
+	padding: 10px;
+	z-index: 10;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.11);
+}
+
+.user_button {
+	cursor: pointer;
+}
+
+@media (max-width: 411px) {
+	#menu {
+		margin: 4px;
+		max-width: calc(100% - 8px);
+	}
+}
+
+#menu hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 0 auto;
+	padding: 0;
+	width: calc(100% - 20px);
+}
+
+.item {
+	font-size: 1.1rem;
+	font-family: 'Alegreya Sans';
+	color: black;
+	padding: 6px;
+	border-radius: 4px;
+	cursor: pointer;
+	align-content: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.item div {
+	width: 100%;
+	text-align: center;
+	padding-right: 24px;
+}
+
+.item:hover {
+	background-color: rgba(240, 240, 240, 0.76);
+}
+
+#overlay {
+	background-color: rgba(0, 0, 0, 0.473);
+	top: var(--header-size);
+	height: calc(100vh - var(--header-size));
+	display: none;
+}
+
+@media (max-width: 411px) {
+	#overlay {
+		position: fixed;
+		background-color: rgba(0, 0, 0, 0.473);
+		display: block;
+	}
+
+	.item {
+		padding: 10px 20px;
+	}
+}
