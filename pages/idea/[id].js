@@ -23,7 +23,7 @@ export default function IdeaPage(props) {
 
 	useEffect(() => {
 		refresh();
-	}, [props]);
+	});
 
 	function addCallback(res) {
 		console.log(res);
@@ -98,5 +98,5 @@ export async function getStaticPaths() {
 
 	// We'll pre-render only these paths at build time.
 	// { fallback: false } means other routes should 404.
-	return { paths, fallback: false };
+	return { paths, fallback: true };
 }

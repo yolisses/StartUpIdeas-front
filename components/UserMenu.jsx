@@ -3,7 +3,7 @@ import { deleteToken } from "../contexts/auth"
 import { useForceUpdate } from "../contexts/forceUpdate"
 import style from "/styles/UserMenu.module.css"
 
-
+import Link from "next/link"
 import Image from 'next/image';
 
 let func = () => { }
@@ -46,12 +46,12 @@ export default function UserMenu(props) {
         {open &&
             <>
                 <div className="paper-like" id={style.menu}>
-                    <a href="/config">
+                    <Link href="/config">
                         <div className={style.item}>
                             <span className="material-icons">settings</span>
                             <div>Config</div>
                         </div>
-                    </a>
+                    </Link>
                     <hr />
                     <div className={style.item} onClick={() => { deleteToken(); forceUpdate() }}>
                         <span className="material-icons">logout</span>
