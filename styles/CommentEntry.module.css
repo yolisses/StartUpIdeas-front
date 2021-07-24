@@ -2,14 +2,14 @@
 	margin-bottom: 20px;
 }
 
-.entry img {
+/* .entry img {
 	width: 32px;
 	height: 32px;
 	box-sizing: content-box;
 	margin-right: 4px;
 	margin-top: 2px;
 	background-color: rgb(180, 180, 180);
-}
+} */
 
 .fake_input {
 	font-family: 'Alegreya Sans';
@@ -17,7 +17,6 @@
 }
 
 .login_button {
-	border: 1px solid rgb(194, 194, 194);
 	border-radius: 8px;
 	color: gray;
 	padding: 5px;

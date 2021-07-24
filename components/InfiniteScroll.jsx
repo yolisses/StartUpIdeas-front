@@ -5,7 +5,7 @@ export function InfiniteScroll(props) {
 
     const [isLoading, setIsLoading] = useState(false);
     const [items, setItems] = useState([])
-    const [page, setPages] = useState(0);
+    const [page, setPages] = useState(props.initialPage || 0);
     const [maxPage, setMaxPage] = useState(10)
 
     const observer = useRef();

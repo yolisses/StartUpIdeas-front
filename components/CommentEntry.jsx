@@ -33,6 +33,12 @@ export function CommentEntry(props) {
     }
 
     function onEnterPress(e) {
+        console.log('enter press')
+        console.log(e)
+        console.log(text)
+        if (/^\s*$/.test(text)) {
+            return
+        }
         sendComment()
         setText('')
         e.target.blur()

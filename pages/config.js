@@ -44,7 +44,7 @@ export default function ConfigPage() {
 					<Image src='/images/user.svg' alt='user' width={100} height={100} />
 					<div className={style.change_name_wrapper}>
 						{changingName ? (
-							<>
+							<div>
 								<input
 									type='text'
 									value={newName}
@@ -56,9 +56,9 @@ export default function ConfigPage() {
 										Save
 									</button>
 								</div>
-							</>
+							</div>
 						) : (
-							<>
+							<div>
 								<h2>{user.name}</h2>
 								<button
 									onClick={() => {
@@ -69,7 +69,7 @@ export default function ConfigPage() {
 								>
 									Change name
 								</button>
-							</>
+							</div>
 						)}
 					</div>
 				</div>
