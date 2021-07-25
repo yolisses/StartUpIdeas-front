@@ -8,7 +8,7 @@ import { useForceUpdate } from '../contexts/forceUpdate'
 import Image from 'next/image'
 
 export function VoteBox(props) {
-    let [voteValue, setVoteValue] = useState(props.value)
+    const [voteValue, setVoteValue] = useState(undefined)
     const [count, setCount] = useState(0)
 
     const refresh = () => {
@@ -75,22 +75,40 @@ export function VoteBox(props) {
     return <div
         className={`${style.box} ${style[conversion[voteValue]]}`}
     >
-        <Image
-            width={size}
-            height={size}
-            src="/images/vote.svg"
-            alt=""
-            onClick={() => sendVote(true)}
-            className={`${style.button} ${style.vote_button_up}`}
-        />
+
+        <style jsx>
+            {
+                `.button-down {
+                    filter: ${voteValue === false ? 'sepia(.4) saturate(10) brightness(1);' : 'none'};
+                }
+                .button-up {
+                    filter: ${voteValue === true ? 'sepia(1) saturate(10);' : 'none'};
+                }
+                `
+            }
+        </style>
+        <div
+            className="button-up">
+            <Image
+                width={size}
+                height={size}
+                src="/images/vote.svg"
+                alt=""
+                onClick={() => sendVote(true)}
+                className={style.button}
+            />
+        </div>
         <span>{count}</span>
-        <Image
-            width={size}
-            height={size}
-            src="/images/downvote.svg"
-            alt=""
-            onClick={() => sendVote(false)}
-            className={`${style.button} ${style.vote_button_down}`}
-        />
+        <div
+            className="button-down">
+            <Image
+                width={size}
+                height={size}
+                src="/images/downvote.svg"
+                alt=""
+                onClick={() => sendVote(false)}
+                className={style.button}
+            />
+        </div>
     </div>
 }

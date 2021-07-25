@@ -10,6 +10,8 @@ import DefaultPageLayout from '../components/DefaultPageLayout';
 
 import { useRouter } from 'next/router';
 
+import Head from 'next/head';
+
 export default function NewIdeaPage(props) {
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
@@ -31,6 +33,9 @@ export default function NewIdeaPage(props) {
 
 	return (
 		<DefaultPageLayout>
+			<Head>
+				<title>New idea!</title>
+			</Head>
 			<h3 className={style.message}>
 				{/* <Icon type="idea" /> */}A new idea to be improved!
 			</h3>

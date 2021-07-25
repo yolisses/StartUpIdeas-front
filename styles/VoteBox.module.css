@@ -15,15 +15,6 @@
 	color: #f39400;
 }
 
-.up {
-}
-
-/* .vote-button-up, */
-.box.up .vote_button_up,
-.box.down .vote_button_down {
-	filter: brightness(1) sepia(1) saturate(5);
-}
-
 .box span {
 	min-width: 20px;
 	text-align: center;
