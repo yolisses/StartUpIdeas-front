@@ -9,6 +9,9 @@ export default function DefaultPageLayout(props) {
                     {props.children}
                 </div>
             </div>
+            <div style={{ position: 'fixed', bottom: '0', left: '0', zIndex: '5', maxWidth: '300px', fontSize: '0.7rem', fontFamily: 'Alegreya Sans' }}>
+                startupideassuport@gmail.com
+            </div>
         </>
     )
 }
