@@ -25,7 +25,14 @@ export default function IdeaPage(props) {
 	const refresh = useCallback(() => {
 		api.get(`/idea/${id}/comments`).then((res) => setComments(res.data));
 		if (!idea) {
-			api.get('/ideas_ids').then((res) => setIdea(res.data));
+			api.get('/idea/' + id).then((res) =>
+				setIdea(
+					res.data || {
+						title: 'no title provided',
+						description: 'no description provided',
+					}
+				)
+			);
 		}
 	}, [id, idea]);
 
@@ -79,7 +86,7 @@ export default function IdeaPage(props) {
 }
 
 export async function getStaticProps(context) {
-	const [idea] = await Promise.all([api.get('/idea/' + context.params.id)]);
+	const [idea] = await api.get('/idea/' + context.params.id);
 	return {
 		props: { idea: idea.data },
 		revalidate: 1,
