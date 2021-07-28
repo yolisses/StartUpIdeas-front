@@ -24,7 +24,7 @@ export default function IdeaPage(props) {
 
 	const refresh = useCallback(() => {
 		api.get(`/idea/${id}/comments`).then((res) => setComments(res.data));
-		if (!idea) {
+		if (!idea || idea.id !== id) {
 			api.get('/idea/' + id).then((res) =>
 				setIdea(
 					res.data || {
@@ -86,7 +86,7 @@ export default function IdeaPage(props) {
 }
 
 export async function getStaticProps(context) {
-	const [idea] = await api.get('/idea/' + context.params.id);
+	const idea = await api.get('/idea/' + context.params.id);
 	return {
 		props: { idea: idea.data },
 		revalidate: 1,
