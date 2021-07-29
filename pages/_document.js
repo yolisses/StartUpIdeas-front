@@ -10,18 +10,17 @@ export default class MyDocument extends Document {
 			<Html lang={this.props.lang || 'en'}>
 				<Head>
 					<script
+						async
+						src='https://www.googletagmanager.com/gtag/js?id=G-5M57NEWD3Y'
+					/>
+					<script
 						dangerouslySetInnerHTML={{
 							__html: `
-                            <!-- Global site tag (gtag.js) - Google Analytics -->
-                            <script async src="https://www.googletagmanager.com/gtag/js?id=G-5M57NEWD3Y"></script>
-                            <script>
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-
-                            gtag('config', 'G-5M57NEWD3Y');
-                            </script>
-                            `,
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5M57NEWD3Y', { page_path: window.location.pathname });
+`,
 						}}
 					/>
 				</Head>
