@@ -1,31 +1,16 @@
 import style from '/styles/VoteBox.module.css'
 import { useEffect, useState } from 'react'
-import { isAuthenticated, retrieveId, retrieveToken } from '../contexts/auth'
 
 import { api } from '../services/api'
-import { useForceUpdate } from '../contexts/forceUpdate'
 
 import Image from 'next/image'
+import { useUser } from '../contexts/AuthContext'
 
 export function VoteBox(props) {
     const [voteValue, setVoteValue] = useState(undefined)
     const [count, setCount] = useState(0)
 
-    const refresh = () => {
-        const route = isAuthenticated() ? `/idea/${props.id}/user/${retrieveId()}/vote` : `/idea/${props.id}/vote`
-        api.get(route)
-            .then((res) => {
-                const { count, vote } = res.data
-                if (vote && vote.is_up !== voteValue) {
-                    setVoteValue(vote && vote.is_up)
-                }
-                setCount(count)
-            })
-    }
-
-    useEffect(refresh)
-
-    useForceUpdate()
+    const { getToken } = useUser()
 
     const conversion = {
         true: 'up',
@@ -34,7 +19,7 @@ export function VoteBox(props) {
     }
 
     const sendVote = async (isUp) => {
-        if (!isAuthenticated()) {
+        if (!user) {
             return
         }
         if (voteValue === undefined || voteValue !== isUp) {
@@ -43,9 +28,8 @@ export function VoteBox(props) {
                 { is_up: isUp },
                 {
                     headers:
-                        { authorization: retrieveToken() }
+                        { authorization: getToken() }
                 }).then(res => {
-                    refresh()
                     if (props.addCallback)
                         props.addCallback(res)
                 })
@@ -54,19 +38,17 @@ export function VoteBox(props) {
             setVoteValue(undefined)
             api.delete(`/idea/${props.id}/vote`, {
                 headers:
-                    { authorization: retrieveToken() },
+                    { authorization: getToken() },
                 data: { is_up: isUp },
             }).then(res => {
-                refresh()
                 if (props.addCallback)
                     props.addCallback(res)
             })
         }
-        refresh()
     }
 
     let className = 'vote-box '
-    if (voteValue !== undefined && isAuthenticated()) {
+    if (voteValue !== undefined && user) {
         className = className + conversion[voteValue]
     }
 

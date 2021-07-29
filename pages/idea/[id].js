@@ -54,7 +54,7 @@ export default function IdeaPage(props) {
 						<h1>{(idea && idea.title) || 'loading...'}</h1>
 						<p>{(idea && idea.description) || 'loading...'}</p>
 					</div>
-					<VoteBox id={id} />
+					{/* <VoteBox id={id} /> */}
 				</div>
 				<div className='paper-like'>
 					<CommentEntry id={idea && idea.id} addCallback={addCallback} />

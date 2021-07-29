@@ -1,4 +1,3 @@
-import { isAuthenticated } from '../contexts/auth'
 import style from "/styles/Header.module.css";
 // import { SearchBox } from './SearchBox'
 
@@ -11,14 +10,15 @@ import { LoginModal } from './LoginModal';
 import Link from 'next/link'
 
 import { NewIdeaButton } from './NewIdeaButton';
-import { useForceUpdate } from '../contexts/forceUpdate';
 import UserMenu from './UserMenu';
 import { ModalContext } from '../contexts/ModalContext';
+import { useUser } from "../contexts/AuthContext";
 
 export default function Header() {
 
     const modal = useContext(ModalContext);
-    useForceUpdate()
+
+    const { user } = useUser()
 
     return (
         <>
@@ -36,7 +36,7 @@ export default function Header() {
                 </Link>
                 {/* <SearchBox></SearchBox> */}
                 <div className={style.end_wrapper}>
-                    {!isAuthenticated() && <>
+                    {!user && <>
                         <button className={style.login_button}
                             onClick={() => {
                                 modal.showModal(
@@ -52,7 +52,7 @@ export default function Header() {
                             }}
                         >Sign in</button> </>
                     }
-                    {isAuthenticated() &&
+                    {user &&
                         <>
                             {
                                 window.location.pathname !== '/new_idea' &&

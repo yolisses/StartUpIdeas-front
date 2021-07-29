@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { retrieveToken } from '../contexts/auth';
 import { api } from '../services/api';
 
 import { TextInput } from '../components/TextInput';
@@ -11,6 +10,7 @@ import DefaultPageLayout from '../components/DefaultPageLayout';
 import { useRouter } from 'next/router';
 
 import Head from 'next/head';
+import { useUser } from '../contexts/AuthContext';
 
 export default function NewIdeaPage(props) {
 	const [title, setTitle] = useState('');
@@ -18,12 +18,14 @@ export default function NewIdeaPage(props) {
 
 	const router = useRouter();
 
+	const { getToken } = useUser();
+
 	const sendIdea = () => {
 		api
 			.post(
 				`/idea`,
 				{ title, description },
-				{ headers: { authorization: retrieveToken() } }
+				{ headers: { authorization: getToken() } }
 			)
 			.then((res) => {
 				if (props.addCallback) props.addCallback(res);

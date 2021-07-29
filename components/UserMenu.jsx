@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
-import { deleteToken } from "../contexts/auth"
-import { useForceUpdate } from "../contexts/forceUpdate"
 import style from "/styles/UserMenu.module.css"
 
 import Link from "next/link"
 import Image from 'next/image';
+import { useUser } from "../contexts/AuthContext";
 
 let func = () => { }
 function hardCore() {
@@ -13,7 +12,6 @@ function hardCore() {
 
 export default function UserMenu(props) {
     const [open, setOpen] = useState(false)
-    const { forceUpdate } = useForceUpdate()
 
     func = () => {
         setOpen(false)
@@ -30,6 +28,7 @@ export default function UserMenu(props) {
         }
     }, [open])
 
+    const { logout } = useUser()
 
     return <div className="flex-v">
         <Image
@@ -51,7 +50,7 @@ export default function UserMenu(props) {
                         </div>
                     </Link>
                     <hr />
-                    <div className={style.item} onClick={() => { deleteToken(); forceUpdate() }}>
+                    <div className={style.item} onClick={() => { logout(); }}>
                         <span className="material-icons">logout</span>
                         <div>Logout</div>
                     </div>

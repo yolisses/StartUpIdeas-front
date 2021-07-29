@@ -2,15 +2,13 @@
 import { api } from "../services/api";
 
 import { GoogleLogin } from 'react-google-login'
-import { storeUserData } from "../contexts/auth";
 
 import style from "../styles/LoginModal.module.css"
 import { ModalContext } from "../contexts/ModalContext";
 import { useContext } from "react";
-import { useForceUpdate } from "../contexts/forceUpdate";
-
 
 import { useRouter } from 'next/router'
+import { useUser } from "../contexts/AuthContext";
 
 export function LoginModal(props) {
     const word = props.signIn ? "Sign in" : "Login"
@@ -18,15 +16,17 @@ export function LoginModal(props) {
     const router = useRouter()
 
     const modal = useContext(ModalContext);
-    const { forceUpdate } = useForceUpdate();
+
+    const { setUser, setToken } = useUser()
 
     const responseGoogle = (res) => {
         api.post('/login', { token: res.tokenId })
             .then(res => {
                 if (res.status === 200) {
-                    storeUserData(res.data)
+                    const { id, name, token } = res.data
+                    setUser({ id, name })
+                    setToken(token)
                     modal.closeModal()
-                    forceUpdate()
                     if (props.redirect) {
                         router.push(props.redirect)
                     }

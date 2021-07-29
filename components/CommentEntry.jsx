@@ -1,19 +1,17 @@
 import { useContext, useState } from "react";
 import { api } from "../services/api";
 
-import { isAuthenticated, retrieveToken } from "../contexts/auth";
-
 import { TextInput } from "./TextInput";
 
 import style from "/styles/CommentEntry.module.css"
 import { ModalContext } from "/contexts/ModalContext";
 
-
 import { LoginModal } from "./LoginModal";
-import { useForceUpdate } from "../contexts/forceUpdate";
+import { useUser } from "../contexts/AuthContext";
 
 export function CommentEntry(props) {
-    useForceUpdate()
+
+    const { user, getToken } = useUser()
 
     const modal = useContext(ModalContext);
 
@@ -23,7 +21,7 @@ export function CommentEntry(props) {
         api.post(`/idea/${props.id}/comments`, { text },
             {
                 headers:
-                    { authorization: retrieveToken() }
+                    { authorization: getToken() }
             }).then(res => {
                 if (props.addCallback)
                     props.addCallback(res)
@@ -43,7 +41,7 @@ export function CommentEntry(props) {
 
     return <div className={style.entry}>
         {/* <img src="https://github.com/yowlisses.png" alt="Yowlisses" className="round" /> */}
-        {isAuthenticated() ?
+        {user ?
             <div>
                 <TextInput
                     value={text}

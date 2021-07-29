@@ -1,15 +1,14 @@
-import { isAuthenticated } from "../contexts/auth"
-import { useForceUpdate } from "../contexts/forceUpdate";
 import { NewIdeaButton } from "./NewIdeaButton"
 
 import style from '../styles/TopButtonWrapper.module.css'
+import { useUser } from "../contexts/AuthContext";
 
 export default function TopButtonWrapper() {
 
-    useForceUpdate()
+    const { user } = useUser()
 
     return <>
-        {!isAuthenticated() ?
+        {!user ?
             <div className={style.wrapper}>
                 <NewIdeaButton />
             </div> :

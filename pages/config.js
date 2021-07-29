@@ -2,23 +2,22 @@ import { useEffect, useState } from 'react';
 import { api } from '../services/api';
 
 import style from '/styles/ConfigPage.module.css';
-import { retrieveId, retrieveName, retrieveToken } from '../contexts/auth';
 import DefaultPageLayout from '../components/DefaultPageLayout';
 
 import Image from 'next/image';
+import { useUser } from '../contexts/AuthContext';
 
 export default function ConfigPage() {
 	const [changingName, setChangingName] = useState(false);
 	const [newName, setNewName] = useState(false);
 
-	const [user, setUser] = useState({ name: retrieveName() });
+	const { user, getToken, setUser } = useUser();
 
 	useEffect(() => {
-		const route = '/user/' + retrieveId();
-		api.get('/user/' + retrieveId()).then((res) => {
+		api.get('/user/' + user.id).then((res) => {
 			setUser(res.data);
 		});
-	}, [changingName]);
+	});
 
 	const changeName = () => {
 		api
@@ -26,10 +25,11 @@ export default function ConfigPage() {
 				'/user',
 				{ name: newName },
 				{
-					headers: { authorization: retrieveToken() },
+					headers: { authorization: getToken() },
 				}
 			)
 			.then((res) => {
+				setUser(res.data);
 				setChangingName(false);
 			});
 	};
@@ -56,7 +56,7 @@ export default function ConfigPage() {
 							</div>
 						) : (
 							<div>
-								<h2>{user.name}</h2>
+								<h2>{user && user.name}</h2>
 								<button
 									onClick={() => {
 										setChangingName(true);

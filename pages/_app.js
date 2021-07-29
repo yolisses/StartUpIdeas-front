@@ -3,12 +3,13 @@ import Head from 'next/head';
 import '../styles/globals.css';
 import '../styles/button.css';
 
-import { ForceUpdateProvider } from '../contexts/forceUpdate';
 import { ModalProvider } from '../contexts/ModalContext';
+
+import { AuthContextProvider } from '../contexts/AuthContext';
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<ForceUpdateProvider>
+		<AuthContextProvider>
 			<ModalProvider>
 				<Head>
 					<link
@@ -48,7 +49,7 @@ function MyApp({ Component, pageProps }) {
 				</Head>
 				<Component {...pageProps} />
 			</ModalProvider>
-		</ForceUpdateProvider>
+		</AuthContextProvider>
 	);
 }
 
