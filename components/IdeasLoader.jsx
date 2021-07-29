@@ -20,16 +20,18 @@ export default function IdeasLoader({ data, maxIndex }) {
     }, [items, maxIndex])
 
     return (
-        <InfiniteScroll
-            dataLength={items.length}
-            next={getMorePost}
-            hasMore={false}
-        // loader={<h3> Loading...</h3>}
-        // endMessage={<h4>Nothing more to show</h4>}
-        >
-            {items.map((item) => (
-                <IdeaListItem {...item} key={item.id} />
-            ))}
-        </InfiniteScroll>
+        <div className="paper-like" style={{ padding: "10px 0px" }}>
+            <InfiniteScroll
+                dataLength={items.length}
+                next={getMorePost}
+                hasMore={false}
+            // loader={<h3> Loading...</h3>}
+            // endMessage={<h4>Nothing more to show</h4>}
+            >
+                {items.map((item) => (
+                    <IdeaListItem {...item} key={item.id} />
+                ))}
+            </InfiniteScroll>
+        </div>
     );
 };
