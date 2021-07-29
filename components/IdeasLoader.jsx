@@ -1,29 +1,35 @@
-import { InfiniteScroll } from "../components/InfiniteScroll";
-import { IdeaListItem } from "../components/IdeaListItem";
+import React, { useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { IdeaListItem } from "./IdeaListItem";
 import { api } from "../services/api";
 
-export default function IdeasLoader(props) {
-    const fetchData = (addItems, page) => {
-        api.get('/idea/page/' + page)
-            .then((res) => {
-                addItems(res.data)
-            })
-    }
+export default function IdeasLoader({ data, maxIndex }) {
+    const [items, setItems] = useState(data);
+    const [hasMore, setHasMore] = useState(true);
 
-    const fetchMaxPage = (setMaxPage) => {
-        api.get('/ideas_total_count')
-            .then((res) => {
-                setMaxPage(res.data.count)
-            })
-    }
+    const getMorePost = async () => {
+        const res = await api.get(`/idea?start=${items.length}`)
 
-    return <div>
-        <div className="paper-like" style={{ padding: "10px 0px" }}>
-            <InfiniteScroll
-                initialPage={props.initialPage}
-                fetchData={fetchData}
-                fetchMaxPage={fetchMaxPage}
-                renderChild={item => <IdeaListItem {...item} key={item.id} />} />
-        </div>
-    </div>
-}
+        const newItems = res.data;
+
+        setItems([...items, ...newItems]);
+    };
+
+    useEffect(() => {
+        setHasMore(!(items.length >= maxIndex))
+    }, [items, maxIndex])
+
+    return (
+        <InfiniteScroll
+            dataLength={items.length}
+            next={getMorePost}
+            hasMore={false}
+        // loader={<h3> Loading...</h3>}
+        // endMessage={<h4>Nothing more to show</h4>}
+        >
+            {items.map((item) => (
+                <IdeaListItem {...item} key={item.id} />
+            ))}
+        </InfiniteScroll>
+    );
+};

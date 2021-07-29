@@ -1,19 +1,11 @@
-import DefaultPageLayout from '../components/DefaultPageLayout';
-import IdeasLoader from '../components/IdeasLoader';
-import TopButtonWrapper from '../components/TopButtonWrapper';
 import { api } from '../services/api';
-
-import Head from 'next/head';
+import IdeasLoader from '../components/IdeasLoader';
 
 export default function index(props) {
 	return (
-		<DefaultPageLayout>
-			<Head>
-				<title>StartUpIdeas</title>
-			</Head>
-			<TopButtonWrapper />
+		<div>
 			<IdeasLoader data={props.data} maxIndex={props.maxIndex} />
-		</DefaultPageLayout>
+		</div>
 	);
 }
 

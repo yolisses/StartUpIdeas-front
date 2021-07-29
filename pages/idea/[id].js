@@ -6,41 +6,21 @@ import TopButtonWrapper from '../../components/TopButtonWrapper';
 import { Comment } from '../../components/Comment';
 import { CommentEntry } from '../../components/CommentEntry';
 import DefaultPageLayout from '../../components/DefaultPageLayout';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
 import Head from 'next/head';
-import { VoteBox } from '../../components/VoteBox';
-
 import IdeasLoader from '../../components/IdeasLoader';
+// import { VoteBox } from '../../components/VoteBox';
 
 export default function IdeaPage(props) {
-	const [idea, setIdea] = useState(props.idea || {});
+	const { idea } = props;
 
 	const router = useRouter();
-	const { id } = router.query;
 
 	let [comments, setComments] = useState([]);
 
-	const refresh = useCallback(() => {
-		api.get(`/idea/${id}/comments`).then((res) => setComments(res.data));
-		if (!idea || idea.id !== id) {
-			api.get('/idea/' + id).then((res) =>
-				setIdea(
-					res.data || {
-						title: 'no title provided',
-						description: 'no description provided',
-					}
-				)
-			);
-		}
-	}, [id, idea]);
-
-	useEffect(() => refresh(), [id, idea, refresh]);
-
-	function addCallback(res) {
-		refresh();
-	}
+	function addCallback(res) {}
 
 	return (
 		<DefaultPageLayout>
@@ -80,18 +60,25 @@ export default function IdeaPage(props) {
 			<div style={{ marginTop: '30px', paddingBottom: '4px' }}>
 				<h3>May interest you</h3>
 			</div>
-			<IdeasLoader />
+			<IdeasLoader data={props.data || []} maxIndex={props.maxIndex || 3} />
 		</DefaultPageLayout>
 	);
 }
 
-export async function getStaticProps(context) {
+export const getStaticProps = async (context) => {
+	const res = await api.get('/idea');
+	const maxIndex = await api.get('/ideas_total_count');
 	const idea = await api.get('/idea/' + context.params.id);
+
 	return {
-		props: { idea: idea.data },
+		props: {
+			data: res.data,
+			idea: idea.data,
+			maxIndex: maxIndex.data.count,
+		},
 		revalidate: 1,
 	};
-}
+};
 
 export async function getStaticPaths() {
 	// Call an external API endpoint to get posts
@@ -104,6 +91,5 @@ export async function getStaticPaths() {
 	}));
 
 	// We'll pre-render only these paths at build time.
-	// { fallback: false } means other routes should 404.
-	return { paths, fallback: true };
+	return { paths, fallback: 'blocking' };
 }
