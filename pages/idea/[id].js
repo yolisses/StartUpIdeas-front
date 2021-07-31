@@ -11,6 +11,7 @@ import { useRouter } from 'next/dist/client/router';
 
 import Head from 'next/head';
 import IdeasLoader from '../../components/IdeasLoader';
+import { StickyShareButtons } from 'sharethis-reactjs';
 // import { VoteBox } from '../../components/VoteBox';
 
 export default function IdeaPage(props) {
@@ -35,6 +36,33 @@ export default function IdeaPage(props) {
 						<p>{(idea && idea.description) || 'loading...'}</p>
 					</div>
 					{/* <VoteBox id={id} /> */}
+					<StickyShareButtons
+						config={{
+							alignment: 'left', // alignment of buttons (left, right)
+							color: 'white', // set the color of buttons (social, white)
+							enabled: true, // show/hide buttons (true, false)
+							font_size: 14, // font size for the buttons
+							hide_desktop: false, // hide buttons on desktop (true, false)
+							labels: 'cta', // button labels (cta, counts, null)
+							language: 'en', // which language to use (see LANGUAGES)
+							min_count: 0, // hide react counts less than min_count (INTEGER)
+							networks: [
+								// which networks to include (see SHARING NETWORKS)
+								'facebook',
+								'twitter',
+								'pinterest',
+								'reddit',
+								'tumblr',
+							],
+							padding: 11, // padding within buttons (INTEGER)
+							radius: 11, // the corner radius on each button (INTEGER)
+							show_total: true, // show/hide the total share count (true, false)
+							show_mobile: true, // show/hide the buttons on mobile (true, false)
+							show_toggle: true, // show/hide the toggle buttons (true, false)
+							size: 44, // the size of each button (INTEGER)
+							top: 160, // offset in pixels from the top of the page
+						}}
+					/>
 				</div>
 				<div className='paper-like'>
 					<CommentEntry id={idea && idea.id} addCallback={addCallback} />

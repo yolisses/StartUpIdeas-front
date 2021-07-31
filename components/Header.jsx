@@ -14,7 +14,7 @@ import UserMenu from './UserMenu';
 import { ModalContext } from '../contexts/ModalContext';
 import { useUser } from "../contexts/AuthContext";
 
-export default function Header() {
+export default function Header(props) {
 
     const modal = useContext(ModalContext);
 
@@ -22,7 +22,7 @@ export default function Header() {
 
     return (
         <>
-            <div className={style.spacer}></div>
+            <div className={style.spacer} style={{ marginBottom: props.noMargin ? '0' : '5p' }}></div>
             <header className={style.header}>
                 <Link href="/">
                     <div className={style.logo}>

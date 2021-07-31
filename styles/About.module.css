@@ -1,0 +1,112 @@
+.card {
+	font-family: 'Alegreya Sans';
+	box-shadow: 5px 5px 8px #88885673;
+	width: 20rem;
+	height: 20rem;
+	border-radius: 10px;
+	background-color: #ffffa3;
+	color: black;
+	padding: 1rem;
+	font-size: 1.5rem;
+}
+
+.cards_wrapper {
+	width: 100%;
+	/* padding-top: 1rem;
+	padding-bottom: 1rem; */
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	gap: 20px;
+}
+
+.cover {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.349), rgba(0, 0, 0, 0.308)),
+		url('/images/cover.jpg');
+	/* background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover; */
+
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	color: white;
+	height: 100vh;
+	align-items: center;
+
+	margin: 0;
+	/* display: none; */
+	flex: 1;
+}
+
+.thanks {
+	color: rgba(0, 0, 0, 0.541);
+	position: absolute;
+	right: 0;
+	bottom: -63px;
+	font-size: 10px;
+	font-family: sans-serif;
+}
+
+.thanks a {
+	color: rgb(0, 0, 0);
+	text-decoration: none;
+}
+
+.big_display {
+	padding-top: 2rem;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 100;
+	}
+}
+
+.about_warning {
+	color: white;
+	font-size: 1.2rem;
+	font-family: 'Source Sans Pro', sans-serif;
+	align-items: center;
+	display: flex;
+	align-items: center;
+
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+
+	animation-name: fade-in;
+	animation-duration: 1s;
+	animation-delay: 0.5s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+
+.page h3 {
+	font-family: 'M PLUS Rounded 1c';
+	font-size: 1.4rem;
+	font-weight: 600;
+	justify-self: left;
+}
+
+.page h1,
+.page h2,
+.page h3 {
+	margin: 1rem;
+	/* font-family: 'PT Serif', serif; */
+	font-family: 'Bree Serif', serif;
+	font-weight: 100;
+}

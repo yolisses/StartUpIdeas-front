@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Header from "./Header";
 
 export default function DefaultPageLayout(props) {
@@ -5,12 +6,9 @@ export default function DefaultPageLayout(props) {
         <>
             <Header />
             <div className='full-width center-h'>
-                <div className='max-width'>
+                <div className='max-width' style={{ minHeight: 'calc(100vh - 50px)' }}>
                     {props.children}
                 </div>
-            </div>
-            <div style={{ position: 'fixed', bottom: '0', left: '0', zIndex: '5', maxWidth: '300px', fontSize: '0.7rem', fontFamily: 'Alegreya Sans' }}>
-                startupideassuport@gmail.com
             </div>
         </>
     )

@@ -1,0 +1,14 @@
+.footer {
+	width: 100%;
+	background-color: rgb(20, 20, 20);
+	color: white;
+	font-family: 'Roboto Slab', sans-serif;
+	padding: 20px 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: end;
+}
+
+.footer a {
+	color: white;
+}
